@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="">
+<head>
+<title>Yammoe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body id="top">
+
+<div class="wrapper row2" >
+    <section class="hoc container clear" >
+
+    <!-- ################################################################################################ -->
+       {% for i in pr %}
+        <div class="forclass" style="display:inline-flex">
+        <figure style="padding-left:20px;"><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height:250px; width:250px;"></a>
+            <figcaption>
+                <h3>{{i.name}}</h3>
+                <p style="width:250px;">{{i.desc|truncatewords:10}}</p>
+                <p><b>Price: {{i.price}} Rs </b></p><br>
+                <p><b>Stock left: {{i.stock}} </b></p>
+          </figure>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+
+
+
+
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hm/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>
+</html>
+{% endblock %}

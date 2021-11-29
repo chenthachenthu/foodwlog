@@ -1,0 +1,98 @@
+{% load static %}
+<html lang="">
+<head>
+<title>Yammoe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<style>
+  /* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  margin-left:404px;
+  font-size: 17px;
+  border: 1px solid black;
+  float: left;
+  width: 40%;
+  background: black;
+}
+
+/* Style the submit button */
+form.example button {
+  float: right;
+  width: 10%;
+  padding: 12px;
+  margin-right:270px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="abcd" style="background-image:url({% static 'hm/images/demo/backgrounds/fdhomeimg.jpg' %});">
+  <!-- ################################################################################################ -->
+  <div class="wrapper row0">
+    <div id="topbar" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <form class="example" action="{% url 'search' %}" method="get">
+  <input type="text" placeholder="Search.." name="q">
+  <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+
+        <!-- ################################################################################################ -->
+        <h1 style="color:cyan"><a href="\">AVODHA SHOPPING</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+        <!-- ################################################################################################ -->
+
+        <ul class="clear" style="color:cyan;">
+          {% if 'username' in request.session %}
+          <li style="color:white;"><b>Hi {{name}}</b></li>
+          <li class="active"><a href="\"><b>Home</b></a></li>
+          <li><a href="{% url 'CartDetails' %}"><b>cart</b></a></li>
+          <li><a href="{% url 'logout' %}"><b>Logout</b></a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}"><b>Login</b></a></li>
+          <li><a href="{% url 'register' %}"><b>Register</b></a></li>
+          {% endif %}
+        </ul>
+
+        <!-- ################################################################################################ -->
+      </nav>
+    </header>
+  </div>
+   </div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

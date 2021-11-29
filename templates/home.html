@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="">
+<head>
+<title>Yammoe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<style>
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url({% static 'hm/images/demo/backgrounds/fdhomeimg.jpg' %});">
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="pageintro" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <article>
+      <p>QUALITY FOOD ITEMS</p>
+      <p>Register with us and have a quality food item at your door step.</p>
+
+  </div>
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+</div>
+<div class="wrapper row2" >
+    <div class="category">
+        <div class="dropdown" style="padding-top:20px">
+  <button class="dropbtn">Filter</button>
+  <div class="dropdown-content">
+
+      <a href="#">All content</a>
+  {% for i in ct %}
+      <a href="{{i.get_url}}">{{i.name}}</a>
+  {% endfor %}
+
+  </div>
+</div>
+        </div>
+    <section class="hoc container clear" >
+
+    <!-- ################################################################################################ -->
+       {% for i in pg %}
+        <div class="forclass" style="display:inline-flex">
+        <figure style="padding-left:20px;"><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height:250px; width:250px;"></a>
+            <figcaption>
+                <h3>{{i.name}}</h3>
+          </figure>
+        </div>
+        {% endfor %}
+
+        <center>
+            {% for p in pg.paginator.page_range %}
+
+            <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %} active {% endif %}">{{p}}</a>
+
+            {% endfor %}
+        </center>
+    </section>
+</div>
+
+
+
+
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hm/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>
+</html>
+{% endblock %}

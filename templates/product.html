@@ -1,0 +1,90 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static './pr/assets/apple-icon-180x180.png' %}">
+  <link href="./pr/assets/favicon.ico" rel="icon">
+
+  <title>Title page</title>
+
+<link href="{% static './pr/main.d8e0d294.css' %}" rel="stylesheet"></head>
+
+<body class="">
+
+<!-- Add your content of header -->
+
+<main class="content-wrapper">
+
+
+ <div class="container">
+   <div class="row">
+     <div class="col-xs-12">
+
+        <div class="card">
+          <div class="card-block" style="overflow-wrap:break-word;">
+            {% if pr.stock > 0 %}
+            <h2>{{pr.name}}</h2>
+            <div class="row">
+              <div class="col-md-4">
+                <p><img src="{{pr.img.url}}" alt="" style="height:250px; width:250px;" class="img-responsive" alt=""></p>
+                 {% if 'username' in request.session %}
+                <a href="{% url 'addcart' pr.id %}" class="btn btn-danger" value="Add to Cart" style="width:150;">Add to Cart</a>
+                {% endif %}
+              </div>
+              <div class="col-md-8">
+                <p>{{pr.desc}}</p>
+                <p><b>Price: {{pr.price}}</b></p>
+                <p><b>Stockleft: {{pr.stock}}</b></p>
+              </div>
+              {% else %}
+              <div class="col-md-8" style="padding-left:300px;color:red; font-family:serif; font-size:30px;">
+                <p><b>Sorry Stock not Available</b></p>
+              </div>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+
+     </div>
+   </div>
+ </div>
+
+</main>
+
+<!--<script>-->
+<!--  document.addEventListener("DOMContentLoaded", function (event) {-->
+<!--     scrollRevelation('.card');-->
+<!--  });-->
+<!--</script>-->
+<!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID-->
+
+<!--<script>-->
+<!--  (function (i, s, o, g, r, a, m) {-->
+<!--    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {-->
+<!--      (i[r].q = i[r].q || []).push(arguments)-->
+<!--    }, i[r].l = 1 * new Date(); a = s.createElement(o),-->
+<!--      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)-->
+<!--  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');-->
+<!--  ga('create', 'UA-XXXXX-X', 'auto');-->
+<!--  ga('send', 'pageview');-->
+<!--</script>-->
+
+<!--&ndash;&gt;<script type="text/javascript" src="./pr/main.bc58148c.js"></script>-->
+</body>
+
+</html>
+
+{% endblock %}

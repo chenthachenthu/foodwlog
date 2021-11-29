@@ -1,0 +1,39 @@
+body{
+        background-color:lightsteelblue;
+    }
+
+    .container-fluid{
+                        border-style: solid;
+                        border-color: cyan;
+
+      }
+
+    #heading
+    {
+              text-align:center;
+              color:red;
+              display: inline;
+              font-family: serif;
+    }
+
+    .product-image{
+
+                text-align:center;
+    }
+    .product-title{
+          font-weight: bold;
+          font-family: serif;
+    }
+    .cenprd{
+        text-align: center;
+        font-weight: bold;
+        font-family: serif;
+    }
+    input{
+            text-align: center;
+    }
+    .lastprd{
+
+      font-weight: bold;
+      font-family: serif;
+    }
